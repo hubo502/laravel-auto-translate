@@ -2,9 +2,9 @@
 
 namespace Darko\AutoTranslate;
 
+use Darko\AutoTranslate\Commands\AutoTranslateCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Darko\AutoTranslate\Commands\AutoTranslateCommand;
 
 class AutoTranslateServiceProvider extends PackageServiceProvider
 {

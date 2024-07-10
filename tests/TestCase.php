@@ -2,9 +2,9 @@
 
 namespace Darko\AutoTranslate\Tests;
 
+use Darko\AutoTranslate\AutoTranslateServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Darko\AutoTranslate\AutoTranslateServiceProvider;
 
 class TestCase extends Orchestra
 {
