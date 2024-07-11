@@ -28,6 +28,10 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'test_mode' => false,//just for test.(won't query translate api,just fake translation)
+    'log' => 'default',//log channel
+    'base_locale' => 'en',
+    'trans_locales' => ['fr', 'es', 'ja', 'it', 'pt'],
 ];
 ```
 
