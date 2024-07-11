@@ -4,6 +4,7 @@ namespace Workbench\App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Workbench\App\Controllers\TestController;
 
 class WorkbenchServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,6 @@ class WorkbenchServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Route::view('/', 'welcome');
+        Route::get('/test', [TestController::class, 'index']);
     }
 }

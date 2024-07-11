@@ -2,12 +2,20 @@
 
 namespace Darko\AutoTranslate;
 
-use Darko\AutoTranslate\Commands\AutoTranslateCommand;
+use Darko\AutoTranslate\Contracts\Services\Translator;
+use Darko\AutoTranslate\Services\AutoTranslator;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class AutoTranslateServiceProvider extends PackageServiceProvider
 {
+    public function registeringPackage(): void
+    {
+        $this->app->singleton(Translator::class, function () {
+            return new AutoTranslator();
+        });
+    }
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -17,9 +25,6 @@ class AutoTranslateServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-auto-translate')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-auto-translate_table')
-            ->hasCommand(AutoTranslateCommand::class);
+            ->hasConfigFile();
     }
 }
