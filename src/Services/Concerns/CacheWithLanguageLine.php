@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Services\Concerns;
 
 use Darko\AutoTranslate\Exceptions\TranslateException;
@@ -6,7 +7,6 @@ use Darko\AutoTranslate\Models\LanguageLine;
 
 trait CacheWithLanguageLine
 {
-
     public function translateWithCache(string $base_value): ?array
     {
         if (empty($base_value)) {

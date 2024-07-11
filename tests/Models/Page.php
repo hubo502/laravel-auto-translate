@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Tests\Models;
 
 use Darko\AutoTranslate\Contracts\Models\AutoTranslatable;
@@ -8,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model implements AutoTranslatable
 {
-
     use HasAutoTranslate, HasFactory;
 
     protected $casts = [
@@ -18,6 +18,8 @@ class Page extends Model implements AutoTranslatable
     protected static $factory = PageFactory::class;
 
     protected $fillable = ['title', 'content', 'blocks', 'desc'];
+
     public $translatable = ['title', 'content', 'blocks', 'desc'];
+
     public $json_translatable = ['title', 'description'];
 }

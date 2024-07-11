@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Services\Concerns;
 
 use Illuminate\Support\Str;
@@ -15,6 +16,7 @@ trait CanAutoTranslateString
         $method = $with_attributes ? 'apiTranslateWithAttributes' : 'apiTranslate';
         $result = Str::$method($text, $locale, $from_locale);
         $this->log->info("[translate string] {$from_locale}:{$locale}", [$text, $result]);
+
         return $result;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Services\Concerns;
 
 use Darko\AutoTranslate\Contracts\Models\AutoTranslatable;

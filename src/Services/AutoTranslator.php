@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Services;
 
 use Darko\AutoTranslate\Contracts\Services\Translator;
@@ -11,7 +12,7 @@ use Psr\Log\LoggerInterface;
 
 class AutoTranslator implements Translator
 {
-    use CanAutoTranslateString, CanAutoTranslateModel, CacheWithLanguageLine;
+    use CacheWithLanguageLine, CanAutoTranslateModel, CanAutoTranslateString;
 
     public LoggerInterface $log;
 
@@ -44,6 +45,7 @@ class AutoTranslator implements Translator
         $method = $with_attributes ? 'apiTranslateWithAttributes' : 'apiTranslate';
         $trans_value = Str::$method($base_value, $trans_locale, $base_locale);
         $this->log->info("[translate string] {$base_locale}:{$trans_locale}", [$base_value, $trans_value]);
+
         return $trans_value;
     }
 }

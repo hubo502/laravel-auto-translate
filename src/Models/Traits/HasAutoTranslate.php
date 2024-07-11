@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Models\Traits;
 
 use Darko\AutoTranslate\Contracts\Services\Translator;
@@ -13,7 +14,7 @@ use Spatie\Translatable\HasTranslations;
  */
 trait HasAutoTranslate
 {
-    use HasTranslations, HasTranslateState;
+    use HasTranslateState, HasTranslations;
 
     public function autoTranslate(bool $force = false): bool
     {
@@ -47,7 +48,7 @@ trait HasAutoTranslate
 
             $trans_locales = collect(app(Translator::class)->trans_locales());
 
-            if ($this->shouldTranslateJsonField($json_field) && !empty($base_value)) {
+            if ($this->shouldTranslateJsonField($json_field) && ! empty($base_value)) {
                 $translations = app(Translator::class)->translate($base_value);
             } else {
                 $translations = $trans_locales
@@ -67,7 +68,7 @@ trait HasAutoTranslate
 
     protected function shouldTranslateJsonField(string $key): bool
     {
-        return Str::of(preg_replace('/\.\d+/', "", $key))->contains($this->json_translatable);
+        return Str::of(preg_replace('/\.\d+/', '', $key))->contains($this->json_translatable);
     }
 
     protected function autoTranslateTextField(string $field, bool $force = false): void
