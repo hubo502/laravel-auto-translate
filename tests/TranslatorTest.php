@@ -23,7 +23,7 @@ it('don\'t translate empty base value', function () {
 })->throws(TranslateException::class);
 
 it('caches language line', function () {
-    $this->translator->translate("hello");
+    $this->translator->translate('hello');
     expect(LanguageLine::keyInCache('hello'))->toBe(true);
     expect(LanguageLine::baseValueInCache('hello'))->toBe(true);
     expect(LanguageLine::getByBaseValue('hello')->translateCompleted())->toBe(true);

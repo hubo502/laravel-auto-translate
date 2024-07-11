@@ -26,16 +26,16 @@ it('计算翻译完成度', function () {
 });
 
 it('翻译完成度标签', function () {
-    expect($this->page->trans_rate_label)->toBe("58%");
+    expect($this->page->trans_rate_label)->toBe('58%');
 });
 
-it("获取某个字段没有翻译的Locales", function () {
+it('获取某个字段没有翻译的Locales', function () {
     expect($this->page->getTransFieldEmptyLocales('title')->toArray())->toContain('fr', 'es', 'ja');
     expect($this->page->getTransFieldEmptyLocales('content')->toArray())->toContain('fr', 'ja');
     expect($this->page->getTransFieldEmptyLocales('desc')->toArray())->toBeEmpty();
 });
 
-it("获取应该翻译的字段", function () {
+it('获取应该翻译的字段', function () {
     expect($this->page->getFieldsShouldTranslate()->toArray())->toContain('title', 'content');
     expect($this->page->getFieldsShouldTranslate(force: true)->toArray())->toContain('title', 'content', 'desc');
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Contracts\Models;
 
 interface AutoTranslatable

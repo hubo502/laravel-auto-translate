@@ -1,4 +1,5 @@
 <?php
+
 namespace Darko\AutoTranslate\Models\Traits;
 
 use Darko\AutoTranslate\Contracts\Services\Translator;
@@ -7,15 +8,14 @@ use Illuminate\Support\Collection;
 
 trait HasTranslateState
 {
-
     protected function transRate(): Attribute
     {
-        return Attribute::make(get: fn() => $this->calcTransRate())->shouldCache();
+        return Attribute::make(get: fn () => $this->calcTransRate())->shouldCache();
     }
 
     protected function transRateLabel(): Attribute
     {
-        return Attribute::make(get: fn() => $this->transRate * 100 . '%')->shouldCache();
+        return Attribute::make(get: fn () => $this->transRate * 100 .'%')->shouldCache();
     }
 
     public function calcTransRate(): float
@@ -33,8 +33,6 @@ trait HasTranslateState
 
     /**
      * 获取字段的源值
-     *
-     * @return mixed
      */
     public function getTransFieldBaseValue(string $field): mixed
     {
@@ -43,13 +41,11 @@ trait HasTranslateState
 
     /**
      * 获取源值不为空的fields
-     *
-     * @return Collection
      */
     public function getTransFieldsHasBaseValue(): Collection
     {
         return collect($this->translatable)->filter(function ($field) {
-            return !empty($this->getTransFieldBaseValue($field));
+            return ! empty($this->getTransFieldBaseValue($field));
         });
     }
 
@@ -67,9 +63,6 @@ trait HasTranslateState
 
     /**
      * 查看哪些locale翻译内容缺失
-     *
-     * @param string $field
-     * @return Collection
      */
     public function getTransFieldEmptyLocales(string $field): Collection
     {
@@ -97,5 +90,4 @@ trait HasTranslateState
     {
         return is_array($this->$field);
     }
-
 }
