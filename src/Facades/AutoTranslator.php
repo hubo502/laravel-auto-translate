@@ -2,15 +2,16 @@
 
 namespace Darko\AutoTranslate\Facades;
 
+use Darko\AutoTranslate\Contracts\Services\Translator;
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Darko\AutoTranslate\AutoTranslate
  */
-class AutoTranslate extends Facade
+class AutoTranslator extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Darko\AutoTranslate\AutoTranslate::class;
+        return Translator::class;
     }
 }

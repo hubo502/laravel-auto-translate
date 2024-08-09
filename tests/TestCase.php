@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Darko\\AutoTranslate\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Darko\\AutoTranslate\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
@@ -26,13 +26,19 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
+        $locales = [
+            'en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB'],
+            'es' => ['name' => 'Spanish', 'script' => 'Latn', 'native' => 'español', 'regional' => 'es_ES'],
+            'fr' => ['name' => 'French', 'script' => 'Latn', 'native' => 'français', 'regional' => 'fr_FR'],
+            'ja' => ['name' => 'Japanese', 'script' => 'Jpan', 'native' => '日本語', 'regional' => 'ja_JP'],
+        ];
+
         config()->set('database.default', 'testing');
         config()->set('auto-translate.base_locale', 'en');
         config()->set('auto-translate.test_mode', true);
-        config()->set('auto-translate.trans_locales', ['fr', 'es', 'ja']);
+        config()->set('auto-translate.locales', $locales);
 
-        $migration = include __DIR__.'/database/migrations/create_test_table.php';
+        $migration = include __DIR__ . '/database/migrations/create_test_table.php';
         $migration->up();
-
     }
 }

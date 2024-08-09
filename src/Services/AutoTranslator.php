@@ -15,20 +15,51 @@ class AutoTranslator implements Translator
     use CacheWithLanguageLine, CanAutoTranslateModel, CanAutoTranslateString;
 
     public LoggerInterface $log;
+    protected array $transLocales;
 
     public function __construct()
     {
         $this->log = Log::channel(config('auto-translate.log'));
+        $this->transLocales = $this->resolveTransLocales();
     }
 
-    public static function base_locale(): string
+    protected function resolveTransLocales(): array
+    {
+        $base = static::base_locale();
+        return array_filter($this->locales(), fn($val) => $val !== $base);
+    }
+
+    public function locales(): array
+    {
+        return array_keys(config('auto-translate.locales', []));
+    }
+
+    public function base_locale(): string
     {
         return (string) config('auto-translate.base_locale', config('app.fallback_locale', 'en'));
     }
 
-    public static function trans_locales(): array
+    public function trans_locales(): array
     {
-        return (array) config('auto-translate.trans_locales', []);
+        return $this->transLocales;
+    }
+    public function locale_options(): array
+    {
+        return collect(config('auto-translate.locales', []))->transform(fn($val) => $val['native'])->toArray();
+    }
+
+    public function localeLabel(string $locale, bool $native = false): ?string
+    {
+
+        $locales = config('auto-translate.locales', []);
+
+        if (!array_key_exists($locale, $locales)) {
+            return null;
+        }
+
+        $current = $locales[$locale];
+
+        return $native ? $current['native'] : $current['name'];
     }
 
     public function translate(string $base_value, bool $with_attributes = false): ?array

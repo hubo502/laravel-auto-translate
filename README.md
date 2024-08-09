@@ -7,7 +7,7 @@
 You can install the package via composer:
 
 ```bash
-composer require darko/laravel-auto-translate
+composer require xdarko/laravel-auto-translate
 ```
 
 You can publish and run the migrations with:

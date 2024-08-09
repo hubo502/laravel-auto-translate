@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 interface Translator
 {
-    public static function base_locale(): string;
+    public  function base_locale(): string;
 
-    public static function trans_locales(): array;
+    public  function locales(): array;
+
+    public  function trans_locales(): array;
+
+    public function locale_options(): array;
+
+    public function localeLabel(string $locale, bool $native = false): ?string;
 
     public function translate(string $text, bool $with_attributes = false): ?array;
 

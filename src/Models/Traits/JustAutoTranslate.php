@@ -16,7 +16,7 @@ trait JustAutoTranslate
             $this->autoTranslateField($field, $force);
         });
 
-        return true;
+        return $this->save();
     }
 
     protected function autoTranslateField(string $field, bool $force = false): void
@@ -30,10 +30,9 @@ trait JustAutoTranslate
             $log->info('[auto translate field]:text', compact('field', 'force'));
             $this->autoTranslateTextField($field, $force);
         }
-
     }
 
-    protected function autoTranslateJsonField(string $field, bool $force = false): void
+    protected function autoTranslateJsonField(string $field): void
     {
         $base_value_json = $this->getTransFieldBaseValue($field);
         $trans_value_json = [];

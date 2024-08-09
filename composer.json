@@ -1,7 +1,7 @@
 {
-    "name": "darko/laravel-auto-translate",
+    "name": "xdarko/laravel-auto-translate",
     "description": "laravel auto translate for models and langs",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "keywords": [
         "Darko",
         "laravel",
