@@ -1,15 +1,14 @@
 {
     "name": "xdarko/laravel-auto-translate",
     "description": "laravel auto translate for models and langs",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "keywords": [
-        "Darko",
         "laravel",
         "laravel-auto-translate",
         "translate",
         "localization"
     ],
-    "homepage": "https://github.com/darko/laravel-auto-translate",
+    "homepage": "https://github.com/hubo502/laravel-auto-translate",
     "license": "MIT",
     "authors": [
         {
