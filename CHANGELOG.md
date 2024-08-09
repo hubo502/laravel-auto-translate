@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-auto-translate` will be documented in this file.
 
+## ver20240809 - 2024-08-09
+
+minor fix
+
 ## ver.20240809 - 2024-08-09
 
 minor fix
