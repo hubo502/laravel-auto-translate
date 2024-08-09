@@ -12,7 +12,7 @@ class AutoTranslateServiceProvider extends PackageServiceProvider
     public function registeringPackage(): void
     {
         $this->app->singleton(Translator::class, function () {
-            return new AutoTranslator();
+            return new AutoTranslator;
         });
     }
 

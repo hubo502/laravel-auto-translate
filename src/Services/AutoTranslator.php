@@ -15,6 +15,7 @@ class AutoTranslator implements Translator
     use CacheWithLanguageLine, CanAutoTranslateModel, CanAutoTranslateString;
 
     public LoggerInterface $log;
+
     protected array $transLocales;
 
     public function __construct()
@@ -26,7 +27,8 @@ class AutoTranslator implements Translator
     protected function resolveTransLocales(): array
     {
         $base = static::base_locale();
-        return array_filter($this->locales(), fn($val) => $val !== $base);
+
+        return array_filter($this->locales(), fn ($val) => $val !== $base);
     }
 
     public function locales(): array
@@ -43,9 +45,10 @@ class AutoTranslator implements Translator
     {
         return $this->transLocales;
     }
+
     public function locale_options(): array
     {
-        return collect(config('auto-translate.locales', []))->transform(fn($val) => $val['native'])->toArray();
+        return collect(config('auto-translate.locales', []))->transform(fn ($val) => $val['native'])->toArray();
     }
 
     public function localeLabel(string $locale, bool $native = false): ?string
@@ -53,7 +56,7 @@ class AutoTranslator implements Translator
 
         $locales = config('auto-translate.locales', []);
 
-        if (!array_key_exists($locale, $locales)) {
+        if (! array_key_exists($locale, $locales)) {
             return null;
         }
 

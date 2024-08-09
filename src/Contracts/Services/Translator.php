@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 interface Translator
 {
-    public  function base_locale(): string;
+    public function base_locale(): string;
 
-    public  function locales(): array;
+    public function locales(): array;
 
-    public  function trans_locales(): array;
+    public function trans_locales(): array;
 
     public function locale_options(): array;
 

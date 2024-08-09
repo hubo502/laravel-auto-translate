@@ -18,7 +18,7 @@ beforeEach(function () {
 });
 
 it('can not translate model not implements autoTranslatable', function () {
-    $model = new Person();
+    $model = new Person;
     $model->autoTranslate();
 })->throws(Exception::class);
 

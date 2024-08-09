@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Darko\\AutoTranslate\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Darko\\AutoTranslate\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -38,7 +38,7 @@ class TestCase extends Orchestra
         config()->set('auto-translate.test_mode', true);
         config()->set('auto-translate.locales', $locales);
 
-        $migration = include __DIR__ . '/database/migrations/create_test_table.php';
+        $migration = include __DIR__.'/database/migrations/create_test_table.php';
         $migration->up();
     }
 }

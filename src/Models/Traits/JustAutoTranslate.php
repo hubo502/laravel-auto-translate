@@ -3,7 +3,6 @@
 namespace Darko\AutoTranslate\Models\Traits;
 
 use Darko\AutoTranslate\Contracts\Services\Translator;
-use Darko\AutoTranslate\Models\Traits\HasTranslateState;
 use Illuminate\Support\Str;
 
 trait JustAutoTranslate
@@ -41,7 +40,7 @@ trait JustAutoTranslate
 
             $trans_locales = collect(app(Translator::class)->trans_locales());
 
-            if ($this->shouldTranslateJsonField($json_field) && !empty($base_value)) {
+            if ($this->shouldTranslateJsonField($json_field) && ! empty($base_value)) {
                 $translations = app(Translator::class)->translate($base_value);
             } else {
                 $translations = $trans_locales

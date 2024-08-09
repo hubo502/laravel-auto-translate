@@ -34,14 +34,14 @@ it('has trans locales', function () {
     expect($trans_locales)->toContain('es', 'fr', 'ja');
 });
 
-it("has trans locale label", function () {
+it('has trans locale label', function () {
     $label = $this->translator->localeLabel('fr');
     $native = $this->translator->localeLabel('fr', native: true);
     $nullLabel = $this->translator->localeLabel('hello');
 
     expect($nullLabel)->toBeNull();
-    expect($label)->toBe("French");
-    expect($native)->toBe("français");
+    expect($label)->toBe('French');
+    expect($native)->toBe('français');
 });
 
 it('don\'t translate empty base value', function () {
